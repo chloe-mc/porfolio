@@ -1,0 +1,23 @@
+body, html {
+    height: 100%;
+}
+
+.bg { 
+    background-image: url("../img/dev-small.jpg");
+    height: 100vh; 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+}
+
+.title {
+	position: relative;
+	top: 28%;
+}
+
+@media (min-width: 992px) {
+	.bg { 
+	    background-image: url("../img/dev-large.jpg");
+	}
+}
