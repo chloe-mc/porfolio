@@ -8,8 +8,21 @@ div.header {
   color: white;
 }
 #map {
-  height: 75vh;
-  margin-top: 20px;
+  height: 100vh;
+  width: 100%;
+}
+#map_panel {
+  position: fixed;
+  top: 40px;
+  z-index: 9000;
+  right: 40px;
+  width: 45%;
+  max-height: 80%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 15px;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.8);
 }
 /* .construction {
   position: fixed;
