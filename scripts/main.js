@@ -1,44 +1,91 @@
-var mymap;
+var map, markers;
 
-$(document).ready(function() {
-  //access_token=pk.eyJ1IjoiY2hsb2UtbWMiLCJhIjoiY2praGJibDFuMHNvZzN2bzNtcWZnbXhhcCJ9.xXYfoIoIpRaO4CXYrqywZw
-  mymap = L.map("map").setView([32.97733373645308, -96.68380737304688], 10);
-  L.tileLayer(
-    "https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}",
+var experiences = [
     {
-      attribution:
-        'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-      maxZoom: 18,
-      id: "mapbox.streets",
-      accessToken:
-        "pk.eyJ1IjoiY2hsb2UtbWMiLCJhIjoiY2praGJibDFuMHNvZzN2bzNtcWZnbXhhcCJ9.xXYfoIoIpRaO4CXYrqywZw"
+        location: [33.207156, -97.152629],
+        title: "University of North Texas",
+        body: "<p>GRADUATED MAY 2013</p>" +
+            "<p>I received a Bachelor of Science in Geography, graduating summa cum laude with a GIS Certificate.</p>"
+    },
+    {
+        location: [33.201731, -97.087396],
+        title: "Denton County",
+        body: "<p>GIS Technician, SEPTEMBER 2012 - MAY 2013</p>" +
+            "<p>I worked here part-time while attending UNT. I became well acquainted with georeferencing while digitizing 1958 aerial imagery."
+    },
+    {
+        location: [33.158723, -96.939448],
+        title: "Town of Little Elm",
+        body: "<p>GIS Technician, MAY 2013 - AUGUST 2013</p>" +
+            "<p>After graduation, I sought full-time employment.<p>" +
+            "<ul><li>Automated the parcel download process using Python.</li>" +
+            "<li>Performed site analysis for new business locations and created attractive maps for public distribution.</li></ul>"
+    },
+    {
+        location: [32.932248, -97.110703],
+        title: "Templeton Demographics",
+        body: "<p>GIS Manager, SEPTEMBER 2013 - SEPTEMBER 2016</p>" +
+            "<p>I got an opportunity to join a rising company in Texas education consulting. We grew the GIS team from 1 person to 3 people.<p>" +
+            "<ul><li>Replaced Google Earth with ArcGIS for Server.</li>" +
+            "<li>Developed tools to assist in redistricting efforts.</li>" +
+            "<li>Provided data for high-stakes decision making.</li></ul>"
+    },
+    {
+        location: [32.755129, -97.335246],
+        title: "Tarrant County",
+        body: "<p>Senior Application Programmer Analyst, SEPTEMBER 2016 - PRESENT</p>" +
+            "<p>Itching for more time to program, I was happy to accept a full-time developer position.<p>" +
+            "<ul><li>Developed full-stack applications using .NET C#, javascript, html, css, and sql.</li>" +
+            "<li>Created integrations with existing software using python.</li>" +
+            "<li>Utilized user feedback to improve legacy applications.</li></ul>"
     }
-  ).addTo(mymap);
+];
 
-  var unt_marker = L.marker([33.207156, -97.152629])
-    .addTo(mymap)
-    .bindPopup(
-      "<h6>UNT</h6><ul>" +
-        "<li>Graduated Summa Cum Laude</li>" +
-        "<li>Majored in Geography</li>" +
-        "<li>GIS Certification</li></ul>"
-    );
-
-  var denton_marker = L.marker([33.201731, -97.087396])
-    .addTo(mymap)
-    .bindPopup("<h6>Denton County</h6>");
-
-  var le_marker = L.marker([33.158723, -96.939448])
-    .addTo(mymap)
-    .bindPopup("<h6>Town of Little Elm</h6>");
-
-  var td_marker = L.marker([32.932248, -97.110703])
-    .addTo(mymap)
-    .bindPopup("<h6>Templeton Demographics</h6>");
-
-  var tarrant_marker = L.marker([32.755129, -97.335246])
-    .addTo(mymap)
-    .bindPopup("<h6>Tarrant County</h6>");
+$(document).ready(function () {
+    LoadMap();
 });
 
-//particlesJS("particles-js", {"particles":{"number":{"value":80,"density":{"enable":true,"value_area":800}},"color":{"value":"#ffffff"},"shape":{"type":"circle","stroke":{"width":0,"color":"#000000"},"polygon":{"nb_sides":5},"image":{"src":"img/github.svg","width":100,"height":100}},"opacity":{"value":0.5,"random":false,"anim":{"enable":false,"speed":1,"opacity_min":0.1,"sync":false}},"size":{"value":3,"random":true,"anim":{"enable":false,"speed":40,"size_min":0.1,"sync":false}},"line_linked":{"enable":true,"distance":150,"color":"#ffffff","opacity":0.4,"width":1},"move":{"enable":true,"speed":6,"direction":"none","random":false,"straight":false,"out_mode":"out","bounce":false,"attract":{"enable":false,"rotateX":600,"rotateY":1200}}},"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":true,"mode":"repulse"},"onclick":{"enable":true,"mode":"push"},"resize":true},"modes":{"grab":{"distance":400,"line_linked":{"opacity":1}},"bubble":{"distance":400,"size":40,"duration":2,"opacity":8,"speed":3},"repulse":{"distance":200,"duration":0.4},"push":{"particles_nb":4},"remove":{"particles_nb":2}}},"retina_detect":true});var count_particles, stats, update; stats = new Stats; stats.setMode(0); stats.domElement.style.position = 'absolute'; stats.domElement.style.left = '0px'; stats.domElement.style.top = '0px'; document.body.appendChild(stats.domElement); count_particles = document.querySelector('.js-count-particles'); update = function() { stats.begin(); stats.end(); if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) { count_particles.innerText = window.pJSDom[0].pJS.particles.array.length; } requestAnimationFrame(update); }; requestAnimationFrame(update);;
+function LoadMap() {
+    map = L.map("map").setView(experiences[0].location, 12);
+    L.tileLayer(
+        "https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}",
+        {
+            attribution:
+                'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 18,
+            id: "mapbox.streets",
+            accessToken:
+                "pk.eyJ1IjoiY2hsb2UtbWMiLCJhIjoiY2praGJibDFuMHNvZzN2bzNtcWZnbXhhcCJ9.xXYfoIoIpRaO4CXYrqywZw"
+        }
+    ).addTo(map);
+
+    map.on('popupopen', function (e) {
+        var px = map.project(e.popup._latlng); // find the pixel location on the map where the popup anchor is
+        px.y -= e.popup._container.clientHeight / 2 // find the height of the popup container, divide by 2, subtract from the Y axis of marker location
+        map.panTo(map.unproject(px), { animate: true, duration: 1 }); // pan to new center
+    });
+
+    markers = new L.featureGroup();
+    experiences.forEach(function (exp, i) {
+        var body = "<h5>" + exp.title + "</h5>" +
+            exp.body +
+            "<div class='d-flex justify-content-end'>" +
+            "<button onclick='advance(" + (i + 1) + ")' class='btn btn-primary btn-sm'>Next</button>" +
+            "</div>";
+
+        var marker = L.marker(exp.location)
+            .bindTooltip(exp.title)
+            .bindPopup(body)
+            .addTo(markers);
+    });
+    markers.addTo(map);
+    advance(0);
+}
+
+function advance(i) {
+    var lyrs = markers.getLayers();
+    i = i >= lyrs.length ? 0 : i;
+
+    var lyr = lyrs[i];
+    lyr.openPopup();
+};

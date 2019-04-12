@@ -1,98 +1,41 @@
 body {
-  font-family: "Roboto", sans-serif;
-  color: #2b2b2b;
+    font-family: "Roboto", sans-serif;
+    color: #2b2b2b;
+    height: 100%;
 }
-div.header {
-  height: 100px;
-  background-color: #2b2b2b;
-  color: white;
+#header {
+    height: 100px;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    background-color: black;
+}
+#links {
+    width: 100%;
+    height: 34px;
+    background-color: black;
+}
+#links > a {
+    color: white;
+    font-size: 18px;
+    padding-left: 15px;
+    padding-bottom: 10px;
+}
+.container > div {
+    margin-top: 60px;
+    text-align: center;
+}
+.section > h2{
+    font-weight: bold;
 }
 #map {
-  height: 100vh;
-  width: 100%;
+    height: 55vh;
 }
-#map_panel {
-  position: fixed;
-  top: 40px;
-  z-index: 9000;
-  right: 40px;
-  width: 45%;
-  max-height: 80%;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
-  padding: 15px;
-  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
-  border: 1px solid rgba(0, 0, 0, 0.8);
+.thumb {
+    width: 300px;
 }
-/* .construction {
-  position: fixed;
-  top: 0;
-  z-index: 9000;
-  height: 100vh;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.8);
-} */
-
-/*div.me {
-    float: right;
-    margin-top: -3em;
+.tags {
+    font-style: italic;
+    color: gray;
 }
-div.me img {
-    width: 150px;
-    border: solid black 3px;
-    padding: 5px;
-    background: white;
-}*/
-/* div.links {
-    padding-top: 1.5em;
-    float: right;
-}
-div.content {
-    padding-top: 4em;
-}
-div.content.thumbnails {
-    display: inline-block;
-}
-div.content .thumbnails .thumb {
-    text-align: center;
-    float: left;
-    padding: 2em;
-}
-div.content .thumbnails .thumb img{
-    width: 175px;
-    height: 175px;
-    border: solid 1px lightgray;
-
-}
-
-.fa {
-    padding: 10px;
-    font-size: 20px;
-    width: 40px;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 50%;
-}
-a.fa:hover {
-    text-decoration: none;
-    color: white;
-    opacity: 0.7;
-}
-.fa-github {
-    background: black;
-    color: white;
-}
-.fa-linkedin {
-    background: #0077B5;
-    color: white;
-}
-.fa-envelope {
-    background: red;
-    color: white;
-}
-
-#particles-js{ 
-    position: absolute;
-    top: 0;
-    width: 100%;
-}  */
