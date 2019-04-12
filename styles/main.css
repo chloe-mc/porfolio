@@ -30,7 +30,7 @@ body {
     font-weight: bold;
 }
 #map {
-    height: 55vh;
+    height: 75vh;
 }
 .thumb {
     width: 300px;
@@ -38,4 +38,23 @@ body {
 .tags {
     font-style: italic;
     color: gray;
+}
+.leaflet-popup-content { 
+    font-family: "Roboto", sans-serif;
+}
+.leaflet-popup-content > h6 { 
+    font-weight: bold;
+}
+.leaflet-popup-content > p { 
+    font-size: 12px;
+}
+
+@media (min-width: 768px) { 
+    .leaflet-popup-content > p { 
+        font-size: 16px;
+    }
+    #intro {
+        margin-left: 20%;
+        margin-right: 20%;
+    }
 }

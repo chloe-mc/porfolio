@@ -4,54 +4,49 @@ var experiences = [
     {
         location: [33.207156, -97.152629],
         title: "University of North Texas",
-        body: "<p>GRADUATED MAY 2013</p>" +
-            "<p>I received a Bachelor of Science in Geography, graduating summa cum laude with a GIS Certificate.</p>"
+        timespan: "GRADUATED MAY 2013",
+        body: "I received a Bachelor of Science in Geography, graduating summa cum laude with a GIS Certificate."
     },
     {
         location: [33.201731, -97.087396],
         title: "Denton County",
-        body: "<p>GIS Technician, SEPTEMBER 2012 - MAY 2013</p>" +
-            "<p>I worked here part-time while attending UNT. I became well acquainted with georeferencing while digitizing 1958 aerial imagery."
+        timespan: "SEPTEMBER 2012 - MAY 2013",
+        body: "I worked here as a GIS technician part-time while attending UNT. I became well acquainted with georeferencing while digitizing 1958 aerial imagery."
     },
     {
         location: [33.158723, -96.939448],
         title: "Town of Little Elm",
-        body: "<p>GIS Technician, MAY 2013 - AUGUST 2013</p>" +
-            "<p>After graduation, I sought full-time employment.<p>" +
-            "<ul><li>Automated the parcel download process using Python.</li>" +
-            "<li>Performed site analysis for new business locations and created attractive maps for public distribution.</li></ul>"
+        timespan: "MAY 2013 - AUGUST 2013",
+        body: "After graduation, I sought full-time employment at Little Elm as a GIS technician. Started experimenting with python and made some pretty maps."
     },
     {
         location: [32.932248, -97.110703],
         title: "Templeton Demographics",
-        body: "<p>GIS Manager, SEPTEMBER 2013 - SEPTEMBER 2016</p>" +
-            "<p>I got an opportunity to join a rising company in Texas education consulting. We grew the GIS team from 1 person to 3 people.<p>" +
-            "<ul><li>Replaced Google Earth with ArcGIS for Server.</li>" +
-            "<li>Developed tools to assist in redistricting efforts.</li>" +
-            "<li>Provided data for high-stakes decision making.</li></ul>"
+        timespan: "SEPTEMBER 2013 - SEPTEMBER 2016",
+        body: "I got an opportunity to join a rising company in Texas education consulting. We grew the GIS team from 1 person " +
+            "to three, promoting me to GIS Manager. This fast-paced position gave me a crash course in all things GIS."
     },
     {
         location: [32.755129, -97.335246],
         title: "Tarrant County",
-        body: "<p>Senior Application Programmer Analyst, SEPTEMBER 2016 - PRESENT</p>" +
-            "<p>Itching for more time to program, I was happy to accept a full-time developer position.<p>" +
-            "<ul><li>Developed full-stack applications using .NET C#, javascript, html, css, and sql.</li>" +
-            "<li>Created integrations with existing software using python.</li>" +
-            "<li>Utilized user feedback to improve legacy applications.</li></ul>"
+        timespan: "SEPTEMBER 2016 - PRESENT",
+        body: "Itching for more time to program, I was happy to accept a full-time GIS developer position at Tarrant County. " +
+            "Here, I have expanded my technical skills and worked on the cool projects that you can check out below."
     }
 ];
 
 $(document).ready(function () {
-    LoadMap();
+    load_map();
 });
 
-function LoadMap() {
+function load_map() {
     map = L.map("map").setView(experiences[0].location, 12);
     L.tileLayer(
         "https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}",
         {
             attribution:
-                'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, '+
+                '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
             maxZoom: 18,
             id: "mapbox.streets",
             accessToken:
@@ -62,30 +57,43 @@ function LoadMap() {
     map.on('popupopen', function (e) {
         var px = map.project(e.popup._latlng); // find the pixel location on the map where the popup anchor is
         px.y -= e.popup._container.clientHeight / 2 // find the height of the popup container, divide by 2, subtract from the Y axis of marker location
-        map.panTo(map.unproject(px), { animate: true, duration: 1 }); // pan to new center
+        map.panTo(map.unproject(px), { animate: true, duration: 0.7 }); // pan to new center
     });
 
     markers = new L.featureGroup();
     experiences.forEach(function (exp, i) {
-        var body = "<h5>" + exp.title + "</h5>" +
-            exp.body +
-            "<div class='d-flex justify-content-end'>" +
-            "<button onclick='advance(" + (i + 1) + ")' class='btn btn-primary btn-sm'>Next</button>" +
+        var btntext = i === experiences.length - 1 ? '<span class="fa fa-redo"></span>' : "Next"; 
+        var body = "<h6>" + exp.title + "</h6>" +
+            "<p>" + exp.body + "</p>" +
+            "<div class='d-flex justify-content-between'>" +
+            "<span>" + exp.timespan + "</span>" +
+            "<button onclick='advance(" + (i + 1) + ")' class='btn btn-primary btn-sm'>" + btntext + "</button>" +
             "</div>";
 
         var marker = L.marker(exp.location)
             .bindTooltip(exp.title)
-            .bindPopup(body)
+            .bindPopup(body, { maxWidth: 228 })
             .addTo(markers);
     });
     markers.addTo(map);
     advance(0);
+
+    var polyline = L.polyline(connect_dots()).addTo(map);
 }
 
 function advance(i) {
     var lyrs = markers.getLayers();
     i = i >= lyrs.length ? 0 : i;
-
     var lyr = lyrs[i];
     lyr.openPopup();
 };
+
+function connect_dots(){
+    var c = [];
+    markers.getLayers().forEach(function(m, i){
+        var x = m.getLatLng().lat;
+        var y = m.getLatLng().lng;
+        c.push([x, y]);
+    });
+    return c;
+}
