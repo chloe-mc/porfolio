@@ -5,7 +5,7 @@ var experiences = [
         location: [33.207156, -97.152629],
         title: "University of North Texas",
         timespan: "GRADUATED MAY 2013",
-        body: "I received a Bachelor of Science in Geography, graduating summa cum laude with a GIS Certificate."
+        body: "I graduated summa cum laude with a Bachelor of Science in Geography and a GIS Certificate."
     },
     {
         location: [33.201731, -97.087396],
@@ -17,26 +17,25 @@ var experiences = [
         location: [33.158723, -96.939448],
         title: "Town of Little Elm",
         timespan: "MAY 2013 - AUGUST 2013",
-        body: "After graduation, I sought full-time employment at Little Elm as a GIS technician. I started experimenting with python and made useful and attractive maps."
+        body: "After graduation, I began working at Little Elm as a full-time GIS technician. I started experimenting with python and data visualization."
     },
     {
         location: [32.932248, -97.110703],
         title: "Templeton Demographics",
         timespan: "SEPTEMBER 2013 - SEPTEMBER 2016",
-        body: "I got an opportunity to join a rising company in Texas education consulting. We grew the GIS team from 1 person " +
-            "to three, promoting me to GIS Manager. This fast-paced position gave me a crash course in all things GIS."
+        body: "I got an opportunity to join a rising company in Texas education consulting. We grew the GIS team from one person to three, promoting me to GIS Manager. This fast-paced position gave me a crash course in all things GIS."
     },
     {
         location: [32.755129, -97.335246],
         title: "Tarrant County",
         timespan: "SEPTEMBER 2016 - PRESENT",
-        body: "Itching for more time to program, I was happy to accept a full-time GIS developer position at Tarrant County. " +
-            "Here, I have expanded my technical skills and worked on the cool projects listed in the next section." 
+        body: "With a growing interest in programming, I transitioned to a GIS developer position. At Tarrant County, I've expanded my technical skills by working on interesting projects." 
     }
 ];
 
 $(document).ready(function () {
-    load_map();
+	load_map();
+	AOS.init();
 });
 
 function load_map() {
