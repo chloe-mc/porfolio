@@ -21,7 +21,9 @@
 		"gatsby-plugin-sharp": "^2.2.22",
 		"gatsby-source-filesystem": "^2.1.22",
 		"gatsby-transformer-sharp": "^2.2.14",
+		"imagemin-pngquant": "^5.0.1",
 		"leaflet": "^1.5.1",
+		"pngquant-bin": "^3.1.1",
 		"prop-types": "^15.7.2",
 		"react": "^16.9.0",
 		"react-bootstrap": "^1.0.0-beta.12",
@@ -33,6 +35,7 @@
 	},
 	"devDependencies": {
 		"gh-pages": "^2.1.1",
+		"pngquant": "^3.0.0",
 		"prettier": "^1.18.2"
 	},
 	"keywords": [
