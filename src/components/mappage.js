@@ -36,18 +36,6 @@ export default class Mappage extends Component {
 		})
 	}
 
-	// onPopupOpen = (e) => {
-	// 	let map = this.mapRef.current.leafletElement;
-	// 	let px = map.project(e.popup.getLatLng());
-	// 	console.log(map._popup._container.offsetHeight);
-	// 	console.log(map)
-	// 	px.y -= e.popup._container.offsetHeight / 2;
-	// 	let position = map.unproject(px);
-	// 	this.setState({
-	// 		position
-	// 	})
-	// }
-
 	render() {
 		let exps = [];
 		let markers = [];
@@ -110,16 +98,3 @@ export default class Mappage extends Component {
 		return null
 	}
 }
-
-
-// // Create your own class, extending from the Marker class.
-// class ExtendedMarker extends Marker {
-// 	// "Hijack" the component lifecycle.
-//   componentDidMount() {
-//   	// Call the Marker class componentDidMount (to make sure everything behaves as normal)
-//   	super.componentDidMount();
-
-//     // Access the marker element and open the popup.
-//     this.leafletElement.openPopup();
-//   }
-// }
