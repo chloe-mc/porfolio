@@ -10,7 +10,7 @@
 		"@fortawesome/free-solid-svg-icons": "^5.11.1",
 		"@fortawesome/react-fontawesome": "^0.1.4",
 		"bootstrap": "^4.3.1",
-		"gatsby": "^2.15.21",
+		"gatsby": "^2.15.15",
 		"gatsby-image": "^2.2.19",
 		"gatsby-plugin-google-fonts": "^1.0.1",
 		"gatsby-plugin-manifest": "^2.2.16",
@@ -21,9 +21,7 @@
 		"gatsby-plugin-sharp": "^2.2.22",
 		"gatsby-source-filesystem": "^2.1.22",
 		"gatsby-transformer-sharp": "^2.2.14",
-		"imagemin-pngquant": "^5.0.1",
 		"leaflet": "^1.5.1",
-		"pngquant-bin": "^3.1.1",
 		"prop-types": "^15.7.2",
 		"react": "^16.9.0",
 		"react-bootstrap": "^1.0.0-beta.12",
@@ -34,7 +32,6 @@
 		"react-responsive-carousel": "^3.1.50"
 	},
 	"devDependencies": {
-		"pngquant": "^3.0.0",
 		"prettier": "^1.18.2"
 	},
 	"keywords": [
