@@ -52,8 +52,8 @@ export default class Mappage extends Component {
 			markers.push(
 				<Marker position={exp.location}>
 					<Popup autoPan={true} className="popupFormat">
-						<h5>{exp.title}</h5>
-						<span className="d-md-none">{exp.body}</span>
+						<h6>{exp.title}</h6>
+						<div className="d-md-none">{exp.body}</div>
 						<span>{exp.timespan}</span>
 						{
 							i === experiences.length - 1 ?

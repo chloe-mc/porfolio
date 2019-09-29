@@ -51,7 +51,7 @@ const Layout = ({ children }) => {
 						</a>
 					</div>
 					<div className="pt-3">
-						© {new Date().getFullYear()}, Built with
+						Chloe McKnight © {new Date().getFullYear()}, Built with
 						{` `}
 						<a href="https://www.gatsbyjs.org">Gatsby</a>
 					</div>

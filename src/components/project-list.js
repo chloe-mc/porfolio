@@ -46,12 +46,13 @@ export default class ProjectList extends Component {
 		projects.forEach((proj, i) => {
 			projList.push(
 				<div className="row mb-5 pb-4" style={{ borderBottom: `1px solid lightgray` }}>
-					<div className="col-12 col-md-5" style={{ textAlign: `center` }}>
+					<div className="col-12 col-md-5 mb-3 mb-md-0" style={{ textAlign: `center` }}>
 						<img alt={proj.title + " thumbnail"} src={proj.thumbnail} />
 						{proj.site ? <a href={proj.site} target="_blank">View Site</a> : null}
 						{proj.site && proj.screenshots ? <span>  |  </span> : null}
 						{proj.screenshots ?
-							<a href="#" onClick={() => { this.openModal(i) }}>View Screenshots</a> : null}
+							<a href="#" onClick={() => { this.openModal(i) }}>View Screenshots</a> : null
+						}
 					</div>
 					<div className="col-12 col-md-7">
 						<h5>{proj.title}</h5>
