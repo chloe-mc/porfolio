@@ -33,7 +33,6 @@
 		"react-responsive-carousel": "^3.1.50"
 	},
 	"devDependencies": {
-		"gh-pages": "^2.1.1",
 		"prettier": "^1.18.2"
 	},
 	"keywords": [
