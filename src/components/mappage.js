@@ -5,7 +5,7 @@ import { faSync, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import experiences from '../content/experience-content'
 
 const mapConfig = {
-	accessToken: "pk.eyJ1IjoiY2hsb2UtbWMiLCJhIjoiY2praGJibDFuMHNvZzN2bzNtcWZnbXhhcCJ9.xXYfoIoIpRaO4CXYrqywZw",
+	accessToken: "pk.eyJ1IjoiY2hsb2UtbWMiLCJhIjoiY2s5ODA2NmhlMWNlbjNrcDM0Ym1xN2hvOSJ9.dXozyK_Prlsg6f3CChxfPA",
 	id: "mapbox.streets"
 }
 
