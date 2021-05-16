@@ -29,11 +29,13 @@ export default class Mappage extends Component {
 	}
 
 	showPopup = (index) => {
-		let lyr = this.markerRef.current.leafletElement.getLayers()[index];
-		lyr.openPopup();
-		this.setState({
-			position: lyr.getLatLng()
-		})
+		if (this.markerRef.current) {
+			let lyr = this.markerRef.current.leafletElement.getLayers()[index];
+			lyr.openPopup();
+			this.setState({
+				position: lyr.getLatLng()
+			})
+		}
 	}
 
 	render() {
@@ -82,7 +84,8 @@ export default class Mappage extends Component {
 						className="col-12 col-md-8" >
 						<TileLayer
 							attribution='Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
-							url={"https://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=" + mapConfig.accessToken}
+							url={"https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=" + mapConfig.accessToken}
+							id="mapbox/streets-v11"
 						/>
 						<FeatureGroup ref={this.markerRef}>
 							{markers}
